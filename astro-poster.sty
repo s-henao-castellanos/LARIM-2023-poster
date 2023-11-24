@@ -1,0 +1,156 @@
+\RequirePackage[utf8]{inputenc}
+\RequirePackage[english]{babel}
+\RequirePackage[sc]{mathpazo}
+\RequirePackage[T1]{fontenc}
+\RequirePackage{indentfirst}
+\RequirePackage{amsmath}
+\RequirePackage{amssymb}
+\RequirePackage{adjustbox}
+\RequirePackage{multicol}
+\RequirePackage{lipsum}
+\RequirePackage{xcolor}
+\RequirePackage{microtype}
+\RequirePackage{enumitem}
+
+
+
+\definecolor{purple}{rgb}{0.4,0.2,0.6}
+\definecolor{applegreen}{rgb}{0.8,1,0.8}
+\definecolor{bordergreen}{rgb}{0.5,0.8,0.5}
+
+\providecommand{\alert}[1]{{\color{purple}#1}}
+
+\RequirePackage[
+    font=small,
+    labelfont=bf,
+    width=0.29\textwidth,
+    hypcap=false
+]{caption}
+
+\addto{\captionsenglish}{
+  \renewcommand{\refname}{\vspace{-0.7em}}
+  \renewcommand{\figurename}{Figure}
+}
+
+% fix paragraph spacing evil hack
+
+\setlength{\parskip}{0.35em} 
+
+\makeatletter
+\let\org@parboxrestore\@parboxrestore
+\def\@parboxrestore{%
+    \edef\restore@parsettings{%
+        %\parindent=\the\parindent\relax
+        \parskip=\the\parskip\relax
+    }%
+    \org@parboxrestore
+    \restore@parsettings
+}
+\makeatother 
+
+\setlist{
+  topsep=-1pt,% set space before and after list
+  noitemsep,% remove space between items
+  labelindent=3mm,% set the label indentation to the paragraph indentation
+  leftmargin=*,% remove the left margin
+  font=\color{purple}\normalfont\bf, %set the colour of all bullets, numbers and descriptions to nustblue
+}
+
+\setlength{\belowdisplayskip}{0pt} \setlength{\belowdisplayshortskip}{0pt}
+\setlength{\abovedisplayskip}{0pt} \setlength{\abovedisplayshortskip}{0pt}
+
+\RequirePackage[colorlinks=true,allcolors=purple]{hyperref}
+	\providecommand*{\listingautorefname}{Listing}
+\RequirePackage[semicolon,round,sort&compress]{natbib}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+% A&A bib tweaks
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\RequirePackage{twoopt}
+% taken from https://www.aanda.org/for-authors/latex-issues/references
+\bibpunct{(}{)}{;}{a}{}{,} %% natbib format for A&A and ApJ
+
+\makeatletter
+\newcommandtwoopt{\citeads}[3][][]{\href{http://adsabs.harvard.edu/abs/#3}%
+{\def\hyper@linkstart##1##2{}%
+\let\hyper@linkend\@empty\citealp[#1][#2]{#3}}}
+\newcommandtwoopt{\citepads}[3][][]{\href{http://adsabs.harvard.edu/abs/#3}%
+{\def\hyper@linkstart##1##2{}%
+\let\hyper@linkend\@empty\citep[#1][#2]{#3}}}
+\newcommandtwoopt{\citetads}[3][][]{\href{http://adsabs.harvard.edu/abs/#3}%
+{\def\hyper@linkstart##1##2{}%
+\let\hyper@linkend\@empty\citet[#1][#2]{#3}}}
+\newcommandtwoopt{\citeyearads}[3][][]%
+{\href{http://adsabs.harvard.edu/abs/#3}
+{\def\hyper@linkstart##1##2{}%
+\let\hyper@linkend\@empty\citeyear[#1][#2]{#3}}}
+\makeatother
+% taken from aa.cls
+\newcommand*\aap{A\&A}
+\let\astap=\aap
+\newcommand*\aapr{A\&A~Rev.}
+\newcommand*\aaps{A\&AS}
+\newcommand*\actaa{Acta Astron.}
+\newcommand*\aj{AJ}
+\newcommand*\ao{Appl.~Opt.}
+\let\applopt\ao
+\newcommand*\apj{ApJ}
+\newcommand*\apjl{ApJ}
+\let\apjlett\apjl
+\newcommand*\apjs{ApJS}
+\let\apjsupp\apjs
+\newcommand*\aplett{Astrophys.~Lett.}
+\newcommand*\apspr{Astrophys.~Space~Phys.~Res.}
+\newcommand*\apss{Ap\&SS}
+\newcommand*\araa{ARA\&A}
+\newcommand*\azh{AZh}
+\newcommand*\baas{BAAS}
+\newcommand*\bac{Bull. astr. Inst. Czechosl.}
+\newcommand*\bain{Bull.~Astron.~Inst.~Netherlands}
+\newcommand*\caa{Chinese Astron. Astrophys.}
+\newcommand*\cjaa{Chinese J. Astron. Astrophys.}
+\newcommand*\fcp{Fund.~Cosmic~Phys.}
+\newcommand*\gca{Geochim.~Cosmochim.~Acta}
+\newcommand*\grl{Geophys.~Res.~Lett.}
+\newcommand*\iaucirc{IAU~Circ.}
+\newcommand*\icarus{Icarus}
+\newcommand*\jcap{J. Cosmology Astropart. Phys.}
+\newcommand*\jcp{J.~Chem.~Phys.}
+\newcommand*\jgr{J.~Geophys.~Res.}
+\newcommand*\jqsrt{J.~Quant.~Spectr.~Rad.~Transf.}
+\newcommand*\jrasc{JRASC}
+\newcommand*\jaavso{Journal of the American Association of Variable Star Observers}
+\newcommand*\memras{MmRAS}
+\newcommand*\memsai{Mem.~Soc.~Astron.~Italiana}
+\newcommand*\mnras{MNRAS}
+\newcommand*\na{New A}
+\newcommand*\nar{New A Rev.}
+\newcommand*\nat{Nature}
+\newcommand*\nphysa{Nucl.~Phys.~A}
+\newcommand*\pasa{PASA}
+\newcommand*\pasj{PASJ}
+\newcommand*\pasp{PASP}
+\newcommand*\physrep{Phys.~Rep.}
+\newcommand*\physscr{Phys.~Scr}
+\newcommand*\planss{Planet.~Space~Sci.}
+\newcommand*\pra{Phys.~Rev.~A}
+\newcommand*\prb{Phys.~Rev.~B}
+\newcommand*\prc{Phys.~Rev.~C}
+\newcommand*\prd{Phys.~Rev.~D}
+\newcommand*\pre{Phys.~Rev.~E}
+\newcommand*\prl{Phys.~Rev.~Lett.}
+\newcommand*\procspie{Proc.~SPIE}
+\newcommand*\qjras{QJRAS}
+\newcommand*\rmxaa{Rev. Mexicana Astron. Astrofis.}
+\newcommand*\skytel{S\&T}
+\newcommand*\solphys{Sol.~Phys.}
+\newcommand*\sovast{Soviet~Ast.}
+\newcommand*\ssr{Space~Sci.~Rev.}
+\newcommand*\zap{ZAp}
+
+
+
+
+
+
