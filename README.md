@@ -5,7 +5,7 @@ preseented on Montevideo, Uruguay 27th November 2023.
 
 ![poster image](poster.png)
 
-(pdf version)
+([pdf version](./poster.pdf))
 
 I used the following external code:
 
