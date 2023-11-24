@@ -5,6 +5,7 @@ preseented on Montevideo, Uruguay 27th November 2023.
 
 ![poster image](poster.png)
 
+(pdf version)
 
 I used the following external code:
 
